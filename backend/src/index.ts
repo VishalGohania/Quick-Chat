@@ -25,7 +25,7 @@ instrument(io, {
 });
 
 setupSocket(io); 
-export {io}
+export default server;
 
 
 
