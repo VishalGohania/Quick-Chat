@@ -18,4 +18,5 @@
 # Log files
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+yarn-error.log*front/.next/
+front/next-env.d.ts

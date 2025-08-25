@@ -5,9 +5,8 @@ import Routes from "./routes/index.js";
 import { Server } from "socket.io";
 import { createServer } from 'node:http';
 import { setupSocket } from "./socket.js";
-import { publisher, subscriber, waitRedisReady } from "./config/redis.config.js";
+import { waitRedisReady } from "./config/redis.config.js";
 import { instrument } from "@socket.io/admin-ui";
-import { createAdapter } from "@socket.io/redis-adapter";
 
 const app: Application = express();
 const server = createServer(app);
