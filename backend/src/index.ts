@@ -19,7 +19,6 @@ const io = new Server(server, {
 });
 
 await waitRedisReady();
-io.adapter(createAdapter(publisher as any, subscriber as any));
 
 instrument(io, {
   auth: false,
