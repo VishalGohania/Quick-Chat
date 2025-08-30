@@ -1,11 +1,11 @@
 import express, { Application, Request, Response } from "express";
 import "dotenv/config";
 import cors from "cors";
-import Routes from "./routes/index.js";
+import Routes from "../src/routes/index.js";
 import { Server } from "socket.io";
 import { createServer } from 'node:http';
-import { setupSocket } from "./socket.js";
-import { waitRedisReady } from "./config/redis.config.js";
+import { setupSocket } from "../src/socket.js";
+import { waitRedisReady } from "../src/config/redis.config.js";
 import { instrument } from "@socket.io/admin-ui";
 
 const app: Application = express();
