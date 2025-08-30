@@ -19,6 +19,7 @@ export interface CustomUser {
 }
 
 export const authOption: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/"
   },
