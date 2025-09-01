@@ -49,13 +49,21 @@ export const authOption: AuthOptions = {
           provider: account?.provider,
           image: user?.image
         }
-        const { data } = await axios.post(LOGIN_URL, payload);
+        const { data } = await axios.post(LOGIN_URL, payload, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 30000
+        });
+        console.log("Backend response:", data);
+
         user.id = data?.user?.id.toString();
         user.token = data?.user?.token;
         user.provider = data?.user?.provider;
         
         return true
       } catch {
+        console.error("LOGIN_URL:", LOGIN_URL)
         return false;
       }
     },
@@ -77,5 +85,6 @@ export const authOption: AuthOptions = {
       }
       return token;
     }
-  }
+  },
+  debug: process.env.NODE_ENV === 'development',
 }

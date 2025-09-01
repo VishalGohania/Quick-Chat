@@ -9,5 +9,5 @@
       "esModuleInterop": true,
       "types": ["node"]
     },
-    "include": ["src", "api/index.ts"]
-  }
+    "include": ["src", "dist/index.js"]
+  } 

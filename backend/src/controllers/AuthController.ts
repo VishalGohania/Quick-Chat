@@ -40,7 +40,7 @@ class AuthController {
         message: "Login in successfully!",
         user: {
           ...findUser,
-          token: `Bearer ${token}`
+          token
         }
       })
     } catch (error) {
