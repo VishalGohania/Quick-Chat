@@ -7,7 +7,7 @@ interface CustomSocket extends Socket {
 }
 
 export async function setupSocket(io: Server) {
-  await waitRedisReady();
+  await waitRedisReady().catch(console.error);
 
   io.use((socket: CustomSocket, next: (err?: ExtendedError) => void) => {
     const room =

@@ -4,7 +4,7 @@ import Env from "./env";
 let socket: Socket;
 export const getSocket = (): Socket => {
   if(!socket) {
-    socket = io(Env.BACKEND_URL, {
+    socket = io(Env.BACKEND_URL || "http://localhost:8000", {
       autoConnect: false,
       reconnection: true,
       reconnectionAttempts: Infinity,

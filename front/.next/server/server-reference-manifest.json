@@ -1,17 +1,5 @@
 {
-  "node": {
-    "402f3453ca91bc56c63968b2067645d62ea47a297d": {
-      "workers": {
-        "app/dashboard/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22F%3A%5C%5Charkirat-Projects%5C%5CQuick-Chat%5C%5Cfront%5C%5Csrc%5C%5Cactions%5C%5Ccommon.ts%22%2C%5B%7B%22id%22%3A%22402f3453ca91bc56c63968b2067645d62ea47a297d%22%2C%22exportedName%22%3A%22clearCache%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/dashboard/page": "action-browser"
-      }
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "Bj/+tju7qedld33iupvbnCp3C3VI62kJMX2055r98gc="
+  "encryptionKey": "zwcqUjuu4Dgw20bIZep+uO7IE2yKmr0Q5SWjG7oNw9s="
 }

@@ -4,8 +4,8 @@ import { fetchChatGroup, fetchChatUsers } from "@/fetch/groupFetch";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export default async function chat({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function chat({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   if (id.length !== 36) {
     return notFound();
   }

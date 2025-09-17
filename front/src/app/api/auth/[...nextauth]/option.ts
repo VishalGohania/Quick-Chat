@@ -1,5 +1,5 @@
 import { LOGIN_URL } from "@/lib/apiEndPoints";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Account, AuthOptions, ISODateString } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
@@ -49,12 +49,12 @@ export const authOption: AuthOptions = {
           provider: account?.provider,
           image: user?.image
         }
-        const { data } = await axios.post(LOGIN_URL, payload, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          timeout: 30000
-        });
+        const { data } = await axios.post(LOGIN_URL, payload, 
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          // timeout: 30000
+        );
         console.log("Backend response:", data);
 
         user.id = data?.user?.id.toString();
@@ -62,29 +62,40 @@ export const authOption: AuthOptions = {
         user.provider = data?.user?.provider;
         
         return true
-      } catch {
-        console.error("LOGIN_URL:", LOGIN_URL)
+      } catch (error) {
+        console.error("SignIn error:", error);
         return false;
       }
     },
-    async session({ 
-      session,
-      user,
-      token
-    }: {
-      session: CustomSession,
-      user: CustomUser, 
-      token: JWT
-    }) {
-      session.user = token.user as CustomUser
-      return session
+    // async session({ session, token }) {
+    //   try {
+    //     if(token?.user) {
+    //       session.user = token.user as CustomUser
+    //     }
+    //     return session;
+    //   } catch (error: any) {
+    //     console.error("Session callback error:", error);
+    //     return session;
+    //   }
+    // },
+    async session({ session, token }) {
+      if (token.user) {
+        session.user = token.user as any;
+      }
+      return session;
     },
     async jwt({ token, user }) {
-      if(user) {
-        token.user = user;
+      try {
+        if(user) {
+          token.user = user;
+        }
+        return token;
+      } catch (error: any) {
+        console.error("JWT callback error:", error);
+        return token;
       }
-      return token;
+      
     }
   },
-  debug: process.env.NODE_ENV === 'development',
+  debug: true,
 }
